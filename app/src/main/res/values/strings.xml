@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">textMe</string>
+    <string name="tab_text_1">friends</string>
+    <string name="tab_text_2">messages</string>
+    <string name="tab_text_3">requests</string>
+    <string name="tab_text_4">settings</string>
+    <string name="action_settings">Settings</string>
+    <string name="search">search</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_messaging_page">MessagingPage</string>
+</resources>
