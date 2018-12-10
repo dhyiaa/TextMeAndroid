@@ -1,5 +1,8 @@
 package com.link.dheyaa.textme;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Friend {
     private String name ;
     private String email;

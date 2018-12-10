@@ -7,6 +7,7 @@
 
 
     <ListView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/friends_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
