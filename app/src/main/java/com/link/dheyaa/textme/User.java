@@ -7,18 +7,19 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private ArrayList<String> friends;
+    private HashMap<String, Boolean> friends;
+
     public User() {
     }
 
-    public User(String username, String password, String email, ArrayList<String> friends) {
+    public User(String username, String password, String email, HashMap<String, Boolean> friends) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.friends = friends;
     }
 
-    public User(String username, String email, ArrayList<String> friends) {
+    public User(String username, String email, HashMap<String, Boolean> friends) {
         this.username = username;
         this.email = email;
         this.friends = friends;
@@ -36,7 +37,7 @@ public class User {
         return email;
     }
 
-    public ArrayList<String>  getFriends() {
+    public HashMap<String, Boolean> getFriends() {
         return friends;
     }
 
@@ -52,7 +53,7 @@ public class User {
         this.email = email;
     }
 
-    public void setFriends(ArrayList<String> friends) {
+    public void setFriends(HashMap<String, Boolean> friends) {
         this.friends = friends;
     }
 
