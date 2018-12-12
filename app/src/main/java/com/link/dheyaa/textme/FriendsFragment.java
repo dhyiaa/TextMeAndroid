@@ -61,18 +61,19 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
      }
 
      ValueEventListener userEventListener = new  ValueEventListener() {
-        ArrayList<User> friends = new ArrayList();
+         HashMap<String , Boolean> friends = new HashMap<String , Boolean>();
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             User user =  dataSnapshot.getValue(User.class);
-            if(user.getFriends() == null){
+            if(user.getFriends() != null){
 
 
-
-            }else{
-                 ArrayList friendsIds =  user.getFriends();
+                /*
+                *
+                *
+                *  ArrayList friendsIds =  user.getFriends();
                  for(int i = 0 ; i < friendsIds.size() - 1 ; i++){
-                     DBref.child(friendsIds.get(i + 1).toString()).addValueEventListener(new ValueEventListener() {
+                     DBref.child(friendsIds.get(i).toString()).addValueEventListener(new ValueEventListener() {
                          @Override
                          public void onDataChange(DataSnapshot dataSnapshot) {
                              User friend = dataSnapshot.getValue(User.class);
@@ -89,10 +90,13 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                      });
 
                  }
+                *
+                * */
+
                 //adapter.notifyDataSetChanged();
 
-                System.out.println ( " ---------------------->>>> " +friendsIds.toString());
-                System.out.println ( " ---------------------->>>> " +friends.toString());
+                //System.out.println ( " ---------------------->>>> " +friendsIds.toString());
+               // System.out.println ( " ---------------------->>>> " +friends.toString());
 
             }
             System.out.println ( " ---------------------->>>> " +user.toString());

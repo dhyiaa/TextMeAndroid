@@ -89,7 +89,7 @@ public class SignUp extends AppCompatActivity {
                                 User userObject = new User(
                                         username.getText().toString(),
                                         email.getText().toString(),
-                                        new ArrayList<String>()
+                                        new  HashMap<String , Boolean>()
                                 );
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -123,8 +123,8 @@ public class SignUp extends AppCompatActivity {
 
     public void SignInPage(View v) {
 
-        startActivity(new Intent(getApplicationContext(), SignIn.class));
-       // finish();
+       // startActivity(new Intent(getApplicationContext(), SignIn.class));
+        finish();
     }
 
 }
