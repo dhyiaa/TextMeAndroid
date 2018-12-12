@@ -121,7 +121,7 @@
             android:clickable="true"
             android:gravity="center"
             android:onClick="SignUpPage"
-            android:text=" create a new account"
+            android:text="Don't have an account? Click here to sign up!"
             android:textSize="16dip" />
 
     </LinearLayout>

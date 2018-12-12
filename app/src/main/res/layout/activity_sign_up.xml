@@ -136,7 +136,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="already have an account ? sign in"
+            android:text="Already have an account? Click here to sign in!"
             android:textSize="16dip"
             android:onClick="SignInPage"
             android:clickable="true"
