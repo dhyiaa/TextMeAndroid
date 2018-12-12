@@ -31,9 +31,9 @@ public class SignIn extends AppCompatActivity {
 
         parentLayout = findViewById(R.id.container_main);
 
-        Button button = (Button) findViewById(R.id.btn_signIn);
-        loading = (ProgressBar) findViewById(R.id.progressBar);
-        setTitle("sign in ");
+        Button button = findViewById(R.id.btn_signIn);
+        loading = findViewById(R.id.progressBar);
+        setTitle("Sign In");
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,8 +55,8 @@ public class SignIn extends AppCompatActivity {
 
         loading.setVisibility(View.VISIBLE);
 
-        EditText email = (EditText) findViewById(R.id.input_email);
-        EditText password = (EditText) findViewById(R.id.input_password);
+        EditText email = findViewById(R.id.input_email);
+        EditText password = findViewById(R.id.input_password);
 
         if(email.getText().length()  != 0 && password.getText().length()  != 0 ){
             mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())

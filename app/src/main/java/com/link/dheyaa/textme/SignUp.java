@@ -40,9 +40,9 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         parentLayout = findViewById(R.id.container_main);
 
-        Button button = (Button) findViewById(R.id.btn_signUp);
-        loading = (ProgressBar) findViewById(R.id.progressBar);
-        setTitle("sign up ");
+        Button button = findViewById(R.id.btn_signUp);
+        loading = findViewById(R.id.progressBar);
+        setTitle("Sign Up");
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -62,9 +62,9 @@ public class SignUp extends AppCompatActivity {
     public void SignUp() {
         loading.setVisibility(View.VISIBLE);
 
-        final EditText username = (EditText) findViewById(R.id.username);
-        final EditText email = (EditText) findViewById(R.id.input_email);
-        final EditText password = (EditText) findViewById(R.id.input_password);
+        final EditText username = findViewById(R.id.username);
+        final EditText email = findViewById(R.id.input_email);
+        final EditText password = findViewById(R.id.input_password);
 
         if (email.getText().length() != 0 && password.getText().length() != 0 && username.getText().length() != 0) {
             mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())

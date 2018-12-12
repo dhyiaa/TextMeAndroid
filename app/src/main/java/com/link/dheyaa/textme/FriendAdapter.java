@@ -14,7 +14,7 @@ import java.util.ArrayList;
  public class FriendAdapter extends ArrayAdapter<Friend>{
 
      private ArrayList<Friend> friends;
-     Context mContext;
+     private Context mContext;
 
      public FriendAdapter(ArrayList<Friend> notes, Context context) {
          super(context, R.layout.friends_list_item, notes);
@@ -31,10 +31,10 @@ import java.util.ArrayList;
 
          Friend currentFriend = friends.get(position);
 
-         TextView friendName = (TextView) listItem.findViewById(R.id.user_name);
+         TextView friendName = listItem.findViewById(R.id.user_name);
          friendName.setText(currentFriend.getName());
 
-         TextView friendEmail = (TextView) listItem.findViewById(R.id.user_email);
+         TextView friendEmail = listItem.findViewById(R.id.user_email);
          friendEmail.setText(currentFriend.getEmail());
 
          return listItem;
