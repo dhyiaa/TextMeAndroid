@@ -19,7 +19,7 @@ import java.util.ArrayList;
      public FriendAdapter(ArrayList<Friend> notes, Context context) {
          super(context, R.layout.friends_list_item, notes);
          this.friends = notes;
-         this.mContext=context;
+         this.mContext = context;
      }
 
 
