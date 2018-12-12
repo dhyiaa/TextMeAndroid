@@ -9,18 +9,43 @@
 
 
     <LinearLayout
+        android:id="@+id/container_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+
+        >
+
+    <android.support.v7.widget.Toolbar
+        android:layout_margin="0dp"
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:background="@color/colorPrimaryDark"
+        app:layout_scrollFlags="enterAlways"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleMarginEnd="20dp"
+        app:titleTextColor="#FFFFFF"
+        app:title="Sign up "/>
+
+    <LinearLayout
+        android:id="@+id/subContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:paddingTop="56dp"
-        android:id="@+id/container_main"
+        android:paddingTop="24dp"
 
         >
-
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="72dp"
@@ -35,6 +60,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:textColorHint="#ffffff"
+            android:focusableInTouchMode="true"
 
             >
 
@@ -116,6 +142,7 @@
             android:clickable="true"
             />
 
+    </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

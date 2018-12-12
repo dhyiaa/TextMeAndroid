@@ -7,13 +7,19 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private HashMap<String , String> friends;
+    private ArrayList<String> friends;
     public User() {
     }
 
-    public User(String username, String password, String email, HashMap<String , String> friends) {
+    public User(String username, String password, String email, ArrayList<String> friends) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.friends = friends;
+    }
+
+    public User(String username, String email, ArrayList<String> friends) {
+        this.username = username;
         this.email = email;
         this.friends = friends;
     }
@@ -30,7 +36,7 @@ public class User {
         return email;
     }
 
-    public HashMap<String , String> getFriends() {
+    public ArrayList<String>  getFriends() {
         return friends;
     }
 
@@ -46,7 +52,7 @@ public class User {
         this.email = email;
     }
 
-    public void setFriends(HashMap<String , String> friends) {
+    public void setFriends(ArrayList<String> friends) {
         this.friends = friends;
     }
 

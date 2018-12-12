@@ -28,6 +28,7 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth mAuth;
     public ProgressBar loading;
     View parentLayout;
+    private android.support.v7.widget.Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,16 @@ public class SignUp extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
         parentLayout = findViewById(R.id.container_main);
+
+        toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               finish();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button button = (Button) findViewById(R.id.btn_signUp);
         loading = (ProgressBar) findViewById(R.id.progressBar);
@@ -72,16 +83,13 @@ public class SignUp extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Log.d("signUp", "ok ");
                                 loading.setVisibility(View.INVISIBLE);
-
                                 FirebaseUser authUser = mAuth.getCurrentUser();
 
                                 User userObject = new User(
                                         username.getText().toString(),
                                         email.getText().toString(),
-                                        password.getText().toString(),
-                                        new HashMap<String, String>()
+                                        new ArrayList<String>()
                                 );
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -92,53 +100,31 @@ public class SignUp extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             loading.setVisibility(View.INVISIBLE);
 
-                                            Snackbar.make(parentLayout, "every thing is good :) ", Snackbar.LENGTH_LONG)
-                                                    .setAction("Action", null).show();
-
                                             FirebaseUser authUser = mAuth.getCurrentUser();
                                             updateUI(authUser);
                                         } else {
-                                            Snackbar.make(parentLayout, "saving  failed", Snackbar.LENGTH_LONG)
-                                                    .setAction("Action", null).show();
+                                            Snackbar.make(parentLayout, "saving  failed", Snackbar.LENGTH_LONG).show();
                                         }
-                                        // updateUI(authUser);
-
-                                        // FirebaseUser authUser = mAuth.getCurrentUser();
-                                        // updateUI(authUser);
                                     }
                                 });
-
-                                // updateUI(authUser);
-
-                                // FirebaseUser authUser = mAuth.getCurrentUser();
-                                // updateUI(authUser);
                             } else {
                                 loading.setVisibility(View.INVISIBLE);
-                                Log.d("signUp", "error" + task.getException());
-
-                                Snackbar.make(parentLayout, "Authentication failed", Snackbar.LENGTH_LONG)
-                                        .setAction("Action", null).show();
-
+                                String errorMsg = task.getException().getMessage();
+                                Snackbar.make( parentLayout , errorMsg, Snackbar.LENGTH_LONG).show();
                                 updateUI(null);
                             }
                         }
                     });
         } else {
             loading.setVisibility(View.INVISIBLE);
-            Snackbar.make(parentLayout, "fill all of the fields !", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Snackbar.make(parentLayout, "Fill all of the fields ", Snackbar.LENGTH_LONG).show();
         }
     }
 
     public void SignInPage(View v) {
+
         startActivity(new Intent(getApplicationContext(), SignIn.class));
-        finish();
+       // finish();
     }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
 
 }

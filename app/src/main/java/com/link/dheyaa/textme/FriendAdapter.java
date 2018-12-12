@@ -16,9 +16,9 @@ import java.util.ArrayList;
      private ArrayList<Friend> friends;
      Context mContext;
 
-     public FriendAdapter(ArrayList<Friend> notes, Context context) {
-         super(context, R.layout.friends_list_item, notes);
-         this.friends = notes;
+     public FriendAdapter(ArrayList<Friend> friends, Context context) {
+         super(context, R.layout.friends_list_item, friends);
+         this.friends = friends;
          this.mContext=context;
      }
 

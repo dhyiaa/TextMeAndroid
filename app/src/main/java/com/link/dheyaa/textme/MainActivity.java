@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+       // setTheme(R.style.DarkTheme);
+
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();

@@ -31,11 +31,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignUp"
-            android:noHistory="true"
             />
         <activity
             android:name=".SignIn"
-            android:noHistory="true"
             ></activity>
 
         <meta-data
