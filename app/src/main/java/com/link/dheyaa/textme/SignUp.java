@@ -123,8 +123,8 @@ public class SignUp extends AppCompatActivity {
 
     public void SignInPage(View v) {
 
-        startActivity(new Intent(getApplicationContext(), SignIn.class));
-       // finish();
+       // startActivity(new Intent(getApplicationContext(), SignIn.class));
+        finish();
     }
 
 }
