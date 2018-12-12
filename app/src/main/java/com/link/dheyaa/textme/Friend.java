@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Friend {
 
-    private String name ;
+    private String name;
     private String email;
 
     public Friend(String name, String email) {
