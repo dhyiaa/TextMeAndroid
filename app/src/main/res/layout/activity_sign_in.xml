@@ -98,12 +98,25 @@
             android:id="@+id/btn_signIn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="24dp"
             android:background="#ffffff"
             android:padding="12dp"
             android:text="Login"
             android:textColor="@color/colorPrimaryDark" />
+
+        <Button
+            android:id="@+id/btn_signUp_Page"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:padding="12dp"
+            android:text="Register"
+            android:onClick="SignUpPage"
+            android:textColor="#ffffffff" />
+
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -113,16 +126,7 @@
             android:layout_marginBottom="20dp"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/link_signup"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:clickable="true"
-            android:gravity="center"
-            android:onClick="SignUpPage"
-            android:text="Don't have an account? Click here to sign up!"
-            android:textSize="16dip" />
+
 
     </LinearLayout>
     </LinearLayout>
