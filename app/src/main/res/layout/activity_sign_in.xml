@@ -7,8 +7,6 @@
     android:background="@color/colorPrimary"
     tools:context=".SignIn">
 
-
-
     <LinearLayout
         android:id="@+id/container_main"
         android:layout_width="match_parent"
@@ -33,7 +31,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleMarginEnd="20dp"
             app:titleTextColor="#FFFFFF"
-            app:title="Sign in "/>
+            app:title="@string/sign_in"/>
 
     <LinearLayout
         android:id="@+id/subContainer"
@@ -88,7 +86,7 @@
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/prompt_password"
                 android:inputType="textPassword"
                 android:textColor="#ffffff"
                 android:textColorHint="#EEEEEE" />
@@ -102,7 +100,7 @@
             android:layout_marginTop="24dp"
             android:background="#ffffff"
             android:padding="12dp"
-            android:text="Login"
+            android:text="@string/action_sign_in"
             android:textColor="@color/colorPrimaryDark" />
 
         <Button
@@ -113,10 +111,9 @@
             android:layout_marginTop="5dp"
             android:background="@color/colorPrimaryDark"
             android:padding="12dp"
-            android:text="Register"
+            android:text="@string/action_register"
             android:onClick="SignUpPage"
             android:textColor="#ffffffff" />
-
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -125,8 +122,6 @@
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="20dp"
             android:visibility="gone" />
-
-
 
     </LinearLayout>
     </LinearLayout>
