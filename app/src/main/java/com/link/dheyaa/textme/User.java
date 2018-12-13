@@ -8,8 +8,42 @@ public class User {
     private String password;
     private String email;
     private HashMap<String, Boolean> friends;
+    private String Id;
+
+    public User(String username, String email, HashMap<String, Boolean> friends, String id) {
+        this.username = username;
+        this.email = email;
+        this.friends = friends;
+        Id = id;
+    }
+
+    public User(String username, String password, String email, HashMap<String, Boolean> friends, String id) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.friends = friends;
+        Id = id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    protected Object clone() {
+        return new User(this.username, this.password, this.email, this.friends, this.Id);
+    }
 
     public User() {
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public User(String username, String password, String email, HashMap<String, Boolean> friends) {
@@ -18,6 +52,7 @@ public class User {
         this.email = email;
         this.friends = friends;
     }
+
 
     public User(String username, String email, HashMap<String, Boolean> friends) {
         this.username = username;
@@ -64,6 +99,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", friends=" + friends +
+                ", Id='" + Id + '\'' +
                 '}';
     }
 }
