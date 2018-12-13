@@ -52,11 +52,10 @@
         android:background="@drawable/cirlce_btn"
         android:drawableTop="@drawable/send_icon"
         android:padding="18dp"
-        android:text=""
+        android:text="@string/null_string"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
         />
-
 
 </android.support.constraint.ConstraintLayout>
