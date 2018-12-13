@@ -21,7 +21,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 
 public class FriendsFragment extends android.support.v4.app.Fragment {
@@ -38,7 +40,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         DBref = FirebaseDatabase.getInstance().getReference("Users");
-        DBref.child(mAuth.getCurrentUser().getUid()).addValueEventListener(userEventListener);
+        DBref.child(mAuth.getCurrentUser().getUid()).child("friends").addValueEventListener(userEventListener);
 
 
         adapter = new FriendAdapter( new ArrayList() , getContext());
@@ -61,45 +63,44 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
      }
 
      ValueEventListener userEventListener = new  ValueEventListener() {
-         HashMap<String , Boolean> friends = new HashMap<String , Boolean>();
+         ArrayList<User> friends = new  ArrayList<User>();
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            User user =  dataSnapshot.getValue(User.class);
-            if(user.getFriends() != null){
+            HashMap<String , Boolean> friendIds = (HashMap<String , Boolean>) dataSnapshot.getValue();
+            if(friendIds.values() != null ){
+
+                adapter.clear();
+                Iterator it = friendIds.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pair = (Map.Entry)it.next();
+
+                    if(pair.getValue().equals(true)){
+                        DBref.child(pair.getKey().toString()).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                User friend = dataSnapshot.getValue(User.class);
+                              //  adapter.remove();
+
+                                friends.add(friend);
+                                System.out.println ( " -----------------friends [] ----->>>> " +dataSnapshot.getValue(User.class).toString());
 
 
-                /*
-                *
-                *
-                *  ArrayList friendsIds =  user.getFriends();
-                 for(int i = 0 ; i < friendsIds.size() - 1 ; i++){
-                     DBref.child(friendsIds.get(i).toString()).addValueEventListener(new ValueEventListener() {
-                         @Override
-                         public void onDataChange(DataSnapshot dataSnapshot) {
-                             User friend = dataSnapshot.getValue(User.class);
-                             friends.add(friend);
-                             System.out.println ( " -----------------friends [] ----->>>> " +dataSnapshot.getValue(User.class).toString());
-                             adapter.add(new Friend(friend.getUsername() , friend.getEmail()));
-                             adapter.notifyDataSetChanged();
-                         }
+                                adapter.add(new User(friend.getUsername() , friend.getEmail() , new HashMap<String, Boolean>()));
+                                adapter.notifyDataSetChanged();
+                            }
 
-                         @Override
-                         public void onCancelled(DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
 
-                         }
-                     });
+                            }
+                        });
+                    }
 
-                 }
-                *
-                * */
-
-                //adapter.notifyDataSetChanged();
-
-                //System.out.println ( " ---------------------->>>> " +friendsIds.toString());
-               // System.out.println ( " ---------------------->>>> " +friends.toString());
+                    it.remove();
+                }
 
             }
-            System.out.println ( " ---------------------->>>> " +user.toString());
+            System.out.println ( " -------------has map item enter key--------->>>> " +friendIds.toString());
 
         }
         @Override

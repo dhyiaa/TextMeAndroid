@@ -11,12 +11,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
- public class FriendAdapter extends ArrayAdapter<Friend>{
+ public class FriendAdapter extends ArrayAdapter<User>{
 
-     private ArrayList<Friend> friends;
+     private ArrayList<User> friends;
      Context mContext;
 
-     public FriendAdapter(ArrayList<Friend> friends, Context context) {
+     public FriendAdapter(ArrayList<User> friends, Context context) {
          super(context, R.layout.friends_list_item, friends);
          this.friends = friends;
          this.mContext=context;
@@ -29,10 +29,10 @@ import java.util.ArrayList;
          if(listItem == null)
              listItem = LayoutInflater.from(mContext).inflate(R.layout.friends_list_item,parent,false);
 
-         Friend currentFriend = friends.get(position);
+         User currentFriend = friends.get(position);
 
          TextView friendName = (TextView) listItem.findViewById(R.id.user_name);
-         friendName.setText(currentFriend.getName());
+         friendName.setText(currentFriend.getUsername());
 
          TextView friendEmail = (TextView) listItem.findViewById(R.id.user_email);
          friendEmail.setText(currentFriend.getEmail());
