@@ -58,6 +58,9 @@ import java.util.ArrayList;
          this.removeAll();
 
          friends.add(newUser);
+
+         System.out.println("->>>>>>>---"+friends.toString());
+
          this.addAll(friends);
 
          this.notifyDataSetChanged();
