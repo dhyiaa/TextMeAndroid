@@ -22,6 +22,7 @@ import java.util.ArrayList;
          this.mContext=context;
      }
 
+
      @Override
      public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
          View listItem = convertView;
@@ -57,6 +58,9 @@ import java.util.ArrayList;
          this.removeAll();
 
          friends.add(newUser);
+
+         System.out.println("->>>>>>>---"+friends.toString());
+
          this.addAll(friends);
 
          this.notifyDataSetChanged();

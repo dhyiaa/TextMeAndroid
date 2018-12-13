@@ -80,7 +80,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                     final Map.Entry pair = (Map.Entry) it.next();
 
                     if (pair.getValue().equals(true)) {
-                        DBref.child(pair.getKey().toString()).addValueEventListener(new ValueEventListener() {
+                            DBref.child(pair.getKey().toString()).addValueEventListener(new ValueEventListener() {
                             String userId = pair.getKey().toString();
 
                             @Override
