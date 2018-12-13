@@ -57,8 +57,8 @@ import java.util.ArrayList;
          }
          this.removeAll();
 
-        // friends.add(newUser);
-        // this.addAll(friends);
+         friends.add(newUser);
+         this.addAll(friends);
 
          this.notifyDataSetChanged();
      }
