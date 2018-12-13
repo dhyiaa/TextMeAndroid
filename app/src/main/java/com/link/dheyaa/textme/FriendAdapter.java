@@ -48,6 +48,11 @@ import java.util.ArrayList;
 
      public void update(String userId , User newUser){
 
+
+         this.removeAll();
+
+         friends.add(newUser);
+
          for(int i = 0 ; i< friends.size() ; i++){
              if(friends.get(i).getId().equalsIgnoreCase(userId)){
                  this.remove(friends.get(i));
@@ -55,9 +60,6 @@ import java.util.ArrayList;
                  // friends_2.remove(i);
              }
          }
-         this.removeAll();
-
-         friends.add(newUser);
 
          System.out.println("->>>>>>>---"+friends.toString());
 
