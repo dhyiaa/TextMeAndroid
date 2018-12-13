@@ -44,7 +44,10 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
         DBref.child(mAuth.getCurrentUser().getUid()).child("friends").addValueEventListener(userEventListener);
 
 
-        adapter = new FriendAdapter(new ArrayList(), getContext());
+        ArrayList<User> dumFriends = new ArrayList();
+        dumFriends.add(new User( "123",  "12345",   new HashMap<String, Boolean>()  ));
+
+        adapter = new FriendAdapter(dumFriends, getContext());
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,11 +88,13 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                                 User user = dataSnapshot.getValue(User.class);
                                 //  adapter.remove();
                                 user.setId(userId);
-                                friends.add(user);
+                              //  friends.add(user);
 
-                                adapter.removeOld(userId , friends);
-                                adapter.add(user);
-                                adapter.notifyDataSetChanged();
+                               // adapter.removeOld(userId , friends);
+
+                                adapter.update(userId  , user);
+
+                                //adapter.add(user);
 
                                 System.out.println(" ->>>>>friend user" + user.toString()+"  ->>>>>");
 
