@@ -39,4 +39,18 @@ import java.util.ArrayList;
 
          return listItem;
      }
+     public void removeOld(String userId , ArrayList<User> friends_2){
+
+        for(int i = 0 ; i< friends.size() ; i++){
+            System.out.println(" ->>>>>remove friend  user" + friends.get(i) +"  ->>>>>");
+
+            if(friends.get(i).getId().equalsIgnoreCase(userId)){
+                System.out.println(" ->>>>>remove friend id user" + friends.get(i).getId() +"  ->>>>>");
+
+                this.remove(friends.get(i));
+               // friends.remove(i);
+               // friends_2.remove(i);
+            }
+        }
+     }
  }
