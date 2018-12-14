@@ -33,6 +33,8 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference DBref;
     private FriendAdapter adapter;
+    ArrayList<User> friends = new ArrayList<User>();
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -41,21 +43,17 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         DBref = FirebaseDatabase.getInstance().getReference("Users");
-        DBref.child(mAuth.getCurrentUser().getUid()).child("friends").addValueEventListener(userEventListener);
+        DBref.child(mAuth.getCurrentUser().getUid()).child("friends").orderByValue().equalTo(true).addValueEventListener(userEventListener);
 
+        this.adapter = new FriendAdapter( new ArrayList(), getContext());
+        listView.setAdapter(this.adapter);
 
-        ArrayList<User> dumFriends = new ArrayList();
-        dumFriends.add(new User( "123",  "12345",   new HashMap<String, Boolean>()  ));
-
-        adapter = new FriendAdapter(dumFriends, getContext());
-
-        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 listView.setClickable(false);
                 Intent Message = new Intent(getActivity(), MessagingPage.class);
-                //  Message.putExtra("Friend_name", friends.get(i).getName());
+                  Message.putExtra("Friend_name", friends.get(i).getUsername());
                 startActivity(Message);
                 listView.setClickable(true);
             }
@@ -67,36 +65,35 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
     }
 
     ValueEventListener userEventListener = new ValueEventListener() {
-        ArrayList<User> friends = new ArrayList<User>();
+        //ArrayList<User> friends = new ArrayList<User>();
 
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             HashMap<String, Boolean> friendIds = (HashMap<String, Boolean>) dataSnapshot.getValue();
-            if (friendIds.values() != null) {
-
-                adapter.clear();
+            if (friendIds != null) {
                 Iterator it = friendIds.entrySet().iterator();
                 while (it.hasNext()) {
                     final Map.Entry pair = (Map.Entry) it.next();
 
-                    if (pair.getValue().equals(true)) {
-                            DBref.child(pair.getKey().toString()).addValueEventListener(new ValueEventListener() {
+                    DBref.child(pair.getKey().toString()).orderByKey().addValueEventListener(new ValueEventListener() {
                             String userId = pair.getKey().toString();
 
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 User user = dataSnapshot.getValue(User.class);
-                                //  adapter.remove();
                                 user.setId(userId);
-                              //  friends.add(user);
+                               user.setFriends(null);
 
-                               // adapter.removeOld(userId , friends);
+                                adapter.removeOld(user , friends);
+                                friends.add(user);
 
-                                adapter.update(userId  , user);
+                                adapter.setFriends(friends);
+                               // adapter.add(user);
 
-                                //adapter.add(user);
+                                System.out.println(">>>>><<<<<<<<----ok ok ok   "+friends.toString());
+                                adapter.addAll(friends);
 
-                                System.out.println(" ->>>>>friend user" + user.toString()+"  ->>>>>");
+                                adapter.notifyDataSetChanged();
 
                             }
 
@@ -105,7 +102,6 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
 
                             }
                         });
-                    }
 
                     it.remove();
                 }

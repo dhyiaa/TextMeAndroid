@@ -1,8 +1,10 @@
  package com.link.dheyaa.textme;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,33 +41,16 @@ import java.util.ArrayList;
 
          return listItem;
      }
-     public void removeAll(){
-
-        for(int i = 0 ; i< friends.size() ; i++){
-            this.remove(friends.get(i));
-        }
-     }
-
-     public void update(String userId , User newUser){
-
-
-         this.removeAll();
-
-         friends.add(newUser);
-
-         for(int i = 0 ; i< friends.size() ; i++){
-             if(friends.get(i).getId().equalsIgnoreCase(userId)){
-                 this.remove(friends.get(i));
-                 // friends.remove(i);
-                 // friends_2.remove(i);
-             }
+     public void removeOld(User user , ArrayList<User> Myfriends){
+         for(int i = 0 ; i < this.friends.size() ; i++){
+            if( this.friends.get(i).getId().equals(user.getId()) ){
+                this.remove(this.friends.get(i));
+                Myfriends.remove(this.friends.get(i));
+            }
          }
-
-         System.out.println("->>>>>>>---"+friends.toString());
-
-         this.addAll(friends);
-
-         this.notifyDataSetChanged();
+     }
+     public void setFriends( ArrayList<User> Myfriends){
+         this.friends = Myfriends;
      }
 
  }
