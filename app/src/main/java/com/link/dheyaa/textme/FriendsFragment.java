@@ -35,14 +35,14 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
     private DatabaseReference DBref;
     private FriendAdapter adapter;
     ArrayList<User> friends = new ArrayList<User>();
-
+    TextView noFriends;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.friends_tab, container, false);
         listView = (ListView) root.findViewById(R.id.friends_list);
 
-        TextView noFriends=root.findViewById(R.id.nofriends);
+         noFriends = root.findViewById(R.id.nofriends);
         mAuth = FirebaseAuth.getInstance();
         DBref = FirebaseDatabase.getInstance().getReference("Users");
         DBref.child(mAuth.getCurrentUser().getUid()).child("friends").orderByValue().equalTo(true).addValueEventListener(userEventListener);
@@ -114,7 +114,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                 }
 
             }else{
-
+                noFriends.setVisibility(View.VISIBLE);
 
             }
         }
