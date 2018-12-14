@@ -40,10 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // setTheme(R.style.DarkTheme);
+        // setTheme(R.style.DarkTheme);
 
         super.onCreate(savedInstanceState);
 
@@ -54,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showContent(){
+    private void showContent() {
 
-       // DBref.child(mAuth.getCurrentUser().getUid()).child("friends").push().setValue("friend1");
+        // DBref.child(mAuth.getCurrentUser().getUid()).Searchchild("friends").push().setValue("friend1");
 
         setContentView(R.layout.activity_main);
 
@@ -109,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle(currentAuthUser.getUsername());
 
                 }
+
                 @Override
                 public void onCancelled(DatabaseError error) {
                 }
@@ -120,33 +120,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.search_btn) {
-            mAuth.signOut();
-            updateUI(mAuth.getCurrentUser());
+
+            Intent Search = new Intent(this, Search.class);
+            startActivity(Search);
+
+            // mAuth.signOut();
+            // updateUI(mAuth.getCurrentUser());
         }
 
         return super.onOptionsItemSelected(item);
     }
 
     public static class PlaceholderFragment extends Fragment {
-
         private static String sectionId;
-
 
         public PlaceholderFragment() {
         }
@@ -162,16 +158,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
             View rootView;
-
             if (getArguments().getInt(sectionId) == 1) {
                 rootView = inflater.inflate(R.layout.friends_tab, container, false);
             } else if (getArguments().getInt(sectionId) == 2) {
-                rootView = inflater.inflate(R.layout.messages_tab, container, false);
-            } else if (getArguments().getInt(sectionId) == 3) {
                 rootView = inflater.inflate(R.layout.requests_tab, container, false);
-            } else if (getArguments().getInt(sectionId) == 4) {
+            } else if (getArguments().getInt(sectionId) == 3) {
                 rootView = inflater.inflate(R.layout.settings_tab, container, false);
             } else {
                 rootView = inflater.inflate(R.layout.friends_tab, container, false);
@@ -188,22 +180,15 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-
             if ((position + 1) == 1) {
                 return new FriendsFragment();
             }
-
             return PlaceholderFragment.newInstance(position + 1);
-
-
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 4;
+            return 3;
         }
     }
 }

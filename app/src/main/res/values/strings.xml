@@ -12,7 +12,7 @@
     <string name="title_activity_messaging_page">Messages</string>
     <string name="title_activity_guest">Sign in</string>
     <string name="null_string"></string>
-    <string name="no_friends">No Friends</string>
+    <string name="no_friends">You have no friends .</string>
 
     <!-- Sign in strings -->
     <string name="prompt_email">Email</string>
