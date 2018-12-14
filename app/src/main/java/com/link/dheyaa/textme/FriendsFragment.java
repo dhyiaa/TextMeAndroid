@@ -88,9 +88,12 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                                 friends.add(user);
 
                                 adapter.setFriends(friends);
+
                                // adapter.add(user);
 
                                 System.out.println(">>>>><<<<<<<<----ok ok ok   "+friends.toString());
+                                adapter.clear();
+                                adapter.remove();
                                 adapter.addAll(friends);
 
                                 adapter.notifyDataSetChanged();

@@ -49,6 +49,13 @@ import java.util.ArrayList;
             }
          }
      }
+     public void remove(){
+
+         for(int i = 0 ; i < this.friends.size() ; i++ ){
+             this.remove(this.friends.get(i));
+
+         }
+     }
      public void setFriends( ArrayList<User> Myfriends){
          this.friends = Myfriends;
      }
