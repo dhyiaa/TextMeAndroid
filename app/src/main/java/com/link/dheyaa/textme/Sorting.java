@@ -27,11 +27,11 @@ public class Sorting {
         }
     }
 
-    public static void sortByAlphabet(ArrayList<User> friendlist) {
-        quickSortBtAlphabet(friendlist, 0, friendlist.size() - 1);
+    public static void quickSortByAlphabet(ArrayList<User> friendList) {
+        quickSort(friendList, 0, friendList.size() - 1);
     }
 
-    private static void quickSortBtAlphabet(ArrayList<User> friendList, int begin, int end) {
+    private static void quickSort(ArrayList<User> friendList, int begin, int end) {
 
         if (begin < end) {
             String comparingName = friendList.get(end).getUsername();
@@ -52,8 +52,8 @@ public class Sorting {
             friendList.remove(wall + 1);
             friendList.add(wall + 1, store);
 
-            quickSortBtAlphabet(friendList, begin, wall);
-            quickSortBtAlphabet(friendList, wall + 2, end);
+            quickSort(friendList, begin, wall);
+            quickSort(friendList, wall + 2, end);
         }
     }
 
@@ -63,8 +63,8 @@ public class Sorting {
         boolean same = true;
         int minLength = Math.min(username1.length(), username2.length());
         for (int o = 0; o < minLength; o++) {
-            char charOfUser1 = username1.toLowerCase().charAt(o);
-            char charOfUser2 = username2.toLowerCase().charAt(o);
+            char charOfUser1 = username1.toLowerCase().trim().charAt(o);
+            char charOfUser2 = username2.toLowerCase().trim().charAt(o);
             if ((charOfUser1 > 122 || charOfUser1 < 97) && (charOfUser2 > 122 || charOfUser2 < 97)) {
                 if (charOfUser1 > charOfUser2) {
                     same = false;

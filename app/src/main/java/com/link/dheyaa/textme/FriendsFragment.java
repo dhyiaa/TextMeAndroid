@@ -82,9 +82,9 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 User user = dataSnapshot.getValue(User.class);
                                 user.setId(userId);
-                               user.setFriends(null);
+                                user.setFriends(null);
 
-                                adapter.removeOld(user , friends);
+                                adapter.removeOld(user, friends);
                                 friends.add(user);
 
                                 adapter.setFriends(friends);
@@ -95,7 +95,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                                 adapter.clear();
                                 adapter.remove();
 
-                                Sorting.sortByAlphabet(friends);
+                                Sorting.quickSortByAlphabet(friends);
                                 adapter.addAll(friends);
 
                                 adapter.notifyDataSetChanged();
