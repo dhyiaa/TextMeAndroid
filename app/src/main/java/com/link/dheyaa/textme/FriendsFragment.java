@@ -94,6 +94,8 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
                                 System.out.println(">>>>><<<<<<<<----ok ok ok   "+friends.toString());
                                 adapter.clear();
                                 adapter.remove();
+
+                                Sorting.sortByAlphabet(friends);
                                 adapter.addAll(friends);
 
                                 adapter.notifyDataSetChanged();
