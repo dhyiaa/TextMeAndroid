@@ -12,6 +12,7 @@
     <string name="title_activity_messaging_page">Messages</string>
     <string name="title_activity_guest">Sign in</string>
     <string name="null_string"></string>
+    <string name="no_friends">No Friends</string>
 
     <!-- Sign in strings -->
     <string name="prompt_email">Email</string>
@@ -33,4 +34,5 @@
 
     <!-- Sign out strings -->
     <string name="action_sign_out">LOGOUT</string>
+
 </resources>
