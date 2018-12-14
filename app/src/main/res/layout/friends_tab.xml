@@ -24,6 +24,11 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <TextView
+        android:id="@+id/nofriends"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <ListView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/friends_list"

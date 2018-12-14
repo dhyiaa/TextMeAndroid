@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +42,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
         View root = inflater.inflate(R.layout.friends_tab, container, false);
         listView = (ListView) root.findViewById(R.id.friends_list);
 
+        TextView noFriends=root.findViewById(R.id.nofriends);
         mAuth = FirebaseAuth.getInstance();
         DBref = FirebaseDatabase.getInstance().getReference("Users");
         DBref.child(mAuth.getCurrentUser().getUid()).child("friends").orderByValue().equalTo(true).addValueEventListener(userEventListener);
@@ -110,6 +112,9 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
 
                     it.remove();
                 }
+
+            }else{
+
 
             }
         }
