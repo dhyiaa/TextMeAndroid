@@ -115,6 +115,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment {
 
             }else{
                 noFriends.setVisibility(View.VISIBLE);
+                listView.setEmptyView(noFriends);
 
             }
         }
